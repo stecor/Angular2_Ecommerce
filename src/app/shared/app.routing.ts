@@ -3,16 +3,23 @@ import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from '../home/home.component';
 import { ErrorComponent } from '../error/error.component';
+import { BlogDetailComponent } from '../blogDetail/blog-detail.component';
+
 
 @NgModule({
-    imports:[
+    imports: [
         RouterModule.forRoot([
-            {path:'', component: HomeComponent},
-            {path: '**', component: ErrorComponent }
-        ])
+            { path: 'post/:id', component: BlogDetailComponent },
+            { path: '' , component: HomeComponent},
+            { path: '**' , component: ErrorComponent }
+        ])    
     ],
     exports: [
         RouterModule
+    ],
+    declarations: [
+        BlogDetailComponent,
+
     ]
 })
-export class AppRoutingModule{}
+export class AppRoutingModule {}
