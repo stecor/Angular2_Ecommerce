@@ -2,7 +2,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { Product } from '../admin/adminShared/product';
-
+import { ShoppingCartService } from '../shared/shopping-cart.service';
 
 @Component({
     templateUrl: './product-detail.component.html',
@@ -15,7 +15,7 @@ import { Product } from '../admin/adminShared/product';
     constructor( 
         private route: ActivatedRoute, 
         private router: Router,
-
+        private cartSVC: ShoppingCartService
     ) {}
 
     ngOnInit(){
@@ -41,6 +41,8 @@ import { Product } from '../admin/adminShared/product';
             });  
     };
 
-
+    addProduct(id:string, name: string, price:number){
+        this.cartSVC.addProduct(id,name,price);
+    }
 
  }
